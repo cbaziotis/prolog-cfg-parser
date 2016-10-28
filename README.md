@@ -7,14 +7,34 @@ Resources: [1], [2]
 # Examples:
 You can add facts to the knowledge base:
 ```
-1 ?- say('vaggelis runs fast').
+?- say('vaggelis runs fast').
 The fact runs(vaggelis,fast) was added to the KB.
 true .
 
-2 ?- say('chris gave a program to themis').
+?- say('chris gave a program to themis').
 The fact gave(chris,program,themis) was added to the KB.
 true .
 ```
+And then ask questions:
+
+```
+?- ask('who runs fast?').
+Answer: vaggelis
+true .
+
+?- ask('how does vaggelis run?').
+Answer: fast
+true .
+
+?- ask('what did chris give to themis?').
+Answer: program
+true .
+
+?- ask('who gave a program to themis?').
+Answer: chris
+true .
+```
+
 
 [1]: Striegnitz, Kristina, et al. "Algorithms for Computational Linguistics." (2003).
 
