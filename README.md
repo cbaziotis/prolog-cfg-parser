@@ -62,7 +62,7 @@ true .
 ?- ask('what was nicky thinking of?').
 false.
 ```
-Notice that at the last question we got a negative answer. This is bracuse we asked the system what nicky *was* thinking, but the fact we imported specifies only what nicky is thinking *right now*.
+Notice that at the last question we got a negative answer. This is because we asked the system what nicky *was* thinking, but the fact we imported specifies only what nicky is thinking *right now*.
 
 Instead if we add the following sentence:
 ```
@@ -73,7 +73,54 @@ true .
 ?- ask('what was nicky thinking of?').
 Answer: drunk(man)
 true .
+
+?- say('nicky thinks that the man in the street is drunk').
+The fact thinks(nicky,drunk(man)) was added to the KB.
+Structure = s(s(np(pn(nicky)),vp(iv(thinks))),conj(that),s(np(det(the),nbar(n(man)),pp(prep(in),np(det(the),nbar(n(street))))),vp(av(is),adj(drunk))))
+-s
+   |-s
+   |   |-np
+   |   |   |-pn
+   |   |   |   |-nicky
+   |   |-vp
+   |   |   |-iv
+   |   |   |   |-thinks
+   |-conj
+   |   |-that
+   |-s
+   |   |-np
+   |   |   |-det
+   |   |   |   |-the
+   |   |   |-nbar
+   |   |   |   |-n
+   |   |   |   |   |-man
+   |   |   |-pp
+   |   |   |   |-prep
+   |   |   |   |   |-in
+   |   |   |   |-np
+   |   |   |   |   |-det
+   |   |   |   |   |   |-the
+   |   |   |   |   |-nbar
+   |   |   |   |   |   |-n
+   |   |   |   |   |   |   |-street
+   |   |-vp
+   |   |   |-av
+   |   |   |   |-is
+   |   |   |-adj
+   |   |   |   |-drunk
+true .
 ```
+
+# Print Parse Tree:
+You can enable verbose output with the `verbose` predicate, which prints the parsed structure of the sentence and the parse tree.
+```
+?- verbose.
+verbose ON
+true.
+
+
+```
+
 
 
 # Import facts from text file:
