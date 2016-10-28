@@ -74,6 +74,16 @@ true .
 Answer: drunk(man)
 true .
 
+```
+
+# Print Parse Tree:
+You can enable verbose output with the `verbose` predicate, which prints the parsed structure of the sentence and the parse tree.
+```
+?- verbose.
+verbose ON
+true.
+
+
 ?- say('nicky thinks that the man in the street is drunk').
 The fact thinks(nicky,drunk(man)) was added to the KB.
 Structure = s(s(np(pn(nicky)),vp(iv(thinks))),conj(that),s(np(det(the),nbar(n(man)),pp(prep(in),np(det(the),nbar(n(street))))),vp(av(is),adj(drunk))))
@@ -109,16 +119,6 @@ Structure = s(s(np(pn(nicky)),vp(iv(thinks))),conj(that),s(np(det(the),nbar(n(ma
    |   |   |-adj
    |   |   |   |-drunk
 true .
-```
-
-# Print Parse Tree:
-You can enable verbose output with the `verbose` predicate, which prints the parsed structure of the sentence and the parse tree.
-```
-?- verbose.
-verbose ON
-true.
-
-
 ```
 
 
