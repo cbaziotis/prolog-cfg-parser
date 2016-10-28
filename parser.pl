@@ -451,13 +451,4 @@ say('vaggelis runs fast').
 ask('who runs fast?').
 ask('how does vaggelis run?').
 
-say('chris gave a program to themis').
-ask('what did chris give to themis?').
-ask('who gave a program to themis?').
-
-Πιο σύνθετο παράδειγμα:
-say('chris gave a good program to themis').
-ask('what did chris give to themis').
-ask('who was chris giving a good program to').
-ask('who gave a good program to themis').
 */
