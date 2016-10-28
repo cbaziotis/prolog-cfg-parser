@@ -1,8 +1,5 @@
 /* ==================================================================================== */
-/* ========		*Επεξεργασία Φυσικής Γλώσσας* 									======= */
-/* ========		ΕΡΓΑΣΙΑ  2012 													======= */
-/* ========		ΧΡΗΣΤΟΣ ΜΠΑΖΙΩΤΗΣ - Π07085 										======= */
-/* ========		ΝΙΚΗ ΤΑΣΟΥΛΑ	  - Π07129 										======= */
+/* ========		Natural Language Processing, Christos Baziotis - 2012			======= */
 /* ==================================================================================== */
 
 /* ==================================================================================== */
@@ -13,9 +10,6 @@ s(s(NP,VP),Sem) --> np(NP,X), vp(VP,Y,Z,W,_,_T), 	{Sem=..[Y,X,Z,W]}.
 s(s(NP,VP),Sem) --> np(NP,X), vp(VP,Y,Z,_,_T), 		{Sem=..[Y,X,Z]}.
 s(s(NP,VP),Sem) --> np(NP,X), vp(VP,Y,_,_T), 		{Sem=..[Y,X]}.
 
-% Ο λόγος για τον οποίο χρησιμοποιούνται 3 διαφορετικοί κανόνες της μορφής
-% S --> NP,VP είναι για την εξαγωγή των διαφορετικών νοημάτων(Semantics)
-% Από τη μεριά της συντακτικής ανάλυσης δεν έχουν διαφορές
 
 /* ==================================================================================== */
 /* 								QUESTION		 										*/
@@ -34,7 +28,7 @@ q(q(AV,NP,V,NP2),Sem,tf) --> av(AV,Av,T), np(NP,N), tv(V,Verb,3,T), np(NP2,N2), 
 
 /* ====================			Wh Facts		==================== */
 
-%ερωτήσεις με νόημα με 3 ορίσματα
+% questions with 3 arguments
 q(q(QW,AV,NP1,V,NP2,PREP), X,wh) --> qw(QW,_Qw), av(AV,_Av,T), np(NP1,N1), tv(V,Verb,_,T), np(NP2,N2), prep(PREP,_Prep),	{Sem=..[Verb,N1,N2,X],Sem}.
 q(q(QW,AV,NP1,V,NP2,PREP), X,wh) --> qw(QW,_Qw), av(AV,_Av,T), np(NP1,N1), tv(V,Verb,_,T), prep(PREP,_Prep), np(NP2,N2),	{Sem=..[Verb,N1,X,N2],Sem}.
 q(q(QW,V,NP1,PREP,NP2),    X,wh) --> qw(QW,_Qw), tv(V,Verb,1,_T), np(NP1,N1), prep(PREP,_Prep), np(NP2,N2), 				{Sem=..[Verb,X,N1,N2],Sem}.
@@ -111,19 +105,12 @@ prep(prep(X),X)	 -->[X], {preparation(X)}.
 
 /* ==================================================================================== */
 /*							VOCABULARY	      				      				      	*/
-/* ------------------------------------------------------------------------------------ */
-/* Στο λεξικό αντί να γίνει χρήση πολλών λιστών, οι οποίες θα περιέχουν από μία λέξη η  */
-/* κάθε μία, χρησιμοποιήθηκε το κατηγόρημα member σε συνδυασμό με *μία* λίστα με τις    */
-/* λέξεις τις μίας κατηγορίας. Με αυτό τον τρόπο είναι πολύ πιο απλό και εύκολο να      */
-/* προσθέσει κανείς μία νέα λέξη στην κατηγορία από το να φτιάξει ένα νέο κανόνα, αφού  */
-/* απλά προσθέτει ένα στοιχείο σε μια λίστα, αλλά κάνει και τον κώδικα πιο απλό και     */
-/* ευανάγνωστο και συνεπώς είναι πιο έυκολο και το debugging του προγράμματος			*/
 /* ==================================================================================== */
 determiner(X):- member(X, [a, an, the, one, some]).
 
 conjuction(X):- member(X, [that, and, but]).
 
-pronoun(X):- member(X, [chris, christos, niki, nicky, giorgos, takis, themis, thanos, panos, xaris, kostas,
+pronoun(X):- member(X, [chris, christos, niki, nicky, vaggelis, giorgos, takis, themis, thanos, panos, xaris, kostas,
 						maria, dimitra, xristina, xristos, aggelos, mixalis, spyros, giannis, manos, sakis,
 						leonidas, apostolis, dimitris, odysseas, axileas, aris, gianna, eleni, antonia]).
 
@@ -189,7 +176,7 @@ iverb(played,1,ps)	-->[played]. 	iverb(played,2,ps) -->[playing].	iverb(played,3
 
 /* ========	  TRANSITIVE	========= */
 tverb(has,1,pr)		-->[has]. 		tverb(has,2,pr) -->[having].		tverb(has,3,pr) -->[have].
-tverb(had,1,ps)		-->[had]. 		tverb(had,2,ps) -->[having].		tverb(hade,3,ps) -->[have].
+tverb(had,1,ps)		-->[had]. 		tverb(had,2,ps) -->[having].		tverb(had,3,ps) -->[have].
 
 tverb(goes,1,pr)	-->[goes]. 		tverb(goes,2,pr) -->[going].		tverb(goes,3,pr) -->[go].
 tverb(went,1,ps)	-->[went]. 		tverb(went,2,ps) -->[going].		tverb(went,3,ps) -->[go].
@@ -202,6 +189,9 @@ tverb(gave,1,ps)	-->[gave]. 		tverb(gave,2,ps) -->[giving].		tverb(gave,3,ps) --
 
 tverb(throws,1,pr)	-->[throws]. 	tverb(throws,2,pr) -->[throwing].	tverb(throws,3,pr) -->[throw].
 tverb(threw,1,ps)	-->[threw]. 	tverb(threw,2,ps) -->[throwing].	tverb(threw,3,ps) -->[throw].
+
+tverb(writes,1,pr)	-->[writes]. 	tverb(writes,2,pr) -->[writing].	tverb(writes,3,pr) -->[write].
+tverb(wrote,1,ps)	-->[wrote]. 	tverb(wrote,2,ps) -->[writing].		tverb(wrote,3,ps) -->[write].
 
 tverb(comes,1,pr)	-->[comes]. 	tverb(comes,2,pr) -->[coming].		tverb(comes,3,pr) -->[come].
 tverb(came,1,ps)	-->[came]. 		tverb(came,2,ps) -->[coming].		tverb(came,3,ps) -->[come].
@@ -249,35 +239,34 @@ av(Av,2):- member(Av, [does, did]).
 /* ==================================================================================== */
 /*							TOKENIZER	      				      				      	*/
 /* ==================================================================================== */
-tokenize([],[]):- !.					% τερματικός κανόνας
+tokenize([],[]):- !.					% terminal rule
 
 tokenize(L,[Word|Out]):-
 	L\==[],
-	tokenize(L,Rest,WordChs),			% αναγνώριση της 1ης λέξης
-	name(Word,WordChs),					% μετατροπή των κωδικών των χαρακτήρων 	της λέξης σε όρο της Prolog 
-	tokenize(Rest,Out).					% μεταφορά στους υπόλοιπους κωδικούς χαρακτήρων
+	tokenize(L,Rest,WordChs),			% recognition of the 1st word 
+	name(Word,WordChs),					% convert the chars to a Prolog term 
+	tokenize(Rest,Out).					% continue with the rest
 
-tokenize([],[],[]):- !.					% Τέλος της λέξης
-	tokenize([46|_],[],[]):- !.			% Τελεία = τέλος πρότασης
-	tokenize([63|_],[],[]):- !.			% Ερωτηματικό = τέλος πρότασης
-	tokenize([32|T],T,[]):- !.			% Κενό = τέλος λέξης
-	tokenize([44|T],T,[]):- !.			% Κόμμα = τέλος λέξης
+tokenize([],[],[]):- !.					% End of word
+	tokenize([46|_],[],[]):- !.			% stop = end of sentence
+	tokenize([63|_],[],[]):- !.			% Question Mark = end of sentence
+	tokenize([32|T],T,[]):- !.			% Space = end of word
+	tokenize([44|T],T,[]):- !.			% Comma = end of word
 
-tokenize([H|T],Rest,[H|List]):-			% Αν δεν τελειώνει μία λέξη τότε γίνεται προσθήκη
-	tokenize(T,Rest,List). 				% του κωδικού χαρακτήρα και επανάληψη.
+tokenize([H|T],Rest,[H|List]):-			% if not end of word
+	tokenize(T,Rest,List). 				% add char and repeat.
 	
-	
+
 	
 /* ------------------------------------------------------------------------------------ */
-/* Οι δύο ακόλουθες μέθοδοι υλοποιούν την γραφική απεικόνιση της συντακτικής ανάλυσης   */
-/* που εκτελεί ο parser. Η μόνη διαφορά που έχουν είναι πως η δεύτερη, σχεδιάζει και 	*/
-/* γραμμές στα σημεία στα οποία αντιστοιχούν τα κλαδιά του συντακτικού δέντρου, ενώ η 	*/
-/* πρώτη όχι. Στο πρόγραμμα επιλέχθηκα να γίνει χρήση της 2ης αλλά συμπεριλαμβάνεται 	*/
-/* και η πρώτη ώστε να δοθεί η δυνατότητα για εναλλακτική.							 	*/
+/* The followinf functions print the parse tree of a sentence that represents the       */
+/* syntactic structure according to the CFG grammar                                 	*/
 /* ------------------------------------------------------------------------------------ */
+
 /* ==================================================================================== */
 /*							PRINT TREE	      				      				      	*/
 /* ==================================================================================== */
+
 drawtree(Struct):- 
         drawtree(Struct,0).
  
@@ -358,31 +347,29 @@ read_loop(FlHndl, CurrentLine, FileAkku, FileContent) :-
 /* ==================================================================================== */
 /*								INFO On/Off			  							      	*/
 /* ------------------------------------------------------------------------------------ */
-/* Η μέθοδος αυτή απλά Ενεργοποιεί / Απενεργοποιεί την γραφική απεικόνιση.			    */
-/* Απο προεπιλογή είναι *απενεργοποιημένη* διότι λόγο της έκτασης ειδικά της δενδροειδής*/
-/* απεικόνισης μπορεί να γίνει ενοχλητική. 											    */
-/* ΧΡΗΣΗ: απλά δίνοντας την εντολή info αλλάζει η κατάσταση από ON σε OFF και αντίστροφα*/
+/* This function enables/disables the graphical representation.						    */
+/* By default it is *disabled*.			 											    */
+/* the command verbose switches the state.													*/
 /* ==================================================================================== */
 
-show_info(Structure) :- info(1),write('Δομή = '),writeln(Structure),pp(Structure).
-show_info(_) :- info(0).
+show_info(Structure) :- verbose(1),write('Structure = '),writeln(Structure),pp(Structure).
+show_info(_) :- verbose(0).
 
-:-dynamic info/1.
-info(0).
+:-dynamic verbose/1.
+verbose(0).
 
-info :- 
-		info(0)
+verbose :- 
+		verbose(0)
 		->
-		retract(info(0)),asserta(info(1)),write('info ON')
+		retract(verbose(0)),asserta(verbose(1)),write('verbose ON')
 		;
-		retract(info(1)),asserta(info(0)),write('info OFF').
+		retract(verbose(1)),asserta(verbose(0)),write('verbose OFF').
 
 /* ==================================================================================== */
 /*						USER INTERACTION FUNCTIONS			      				      	*/
 /* ------------------------------------------------------------------------------------ */
-/* Σε αυτό το σημείο ακολουθούν μερικοί κανόνες οι οποίοι τον τρόπο αλληλεπίδρασης	    */
-/* του χρήστη με το πρόγραμμα. Ο στόχος είναι να είναι πιο φυσική η επικοινωνία και     */
-/* να διευκολύνεται η εισαγωγή προτάσεων - γνώσης και η εξαγωγή συμπερασμάτων.          */
+/* Functions that make it easier for the user to add sentences / knowledge		        */
+/* and extract conclusions.													            */
 /* ==================================================================================== */
 
 printLine([]).
@@ -399,21 +386,21 @@ printParseTree([H|T]):- write(H), nl, name(H,L),tokenize(L,Out),s(Structure,_,Ou
 
 printAll([]).
 printAll([H|T]):- 
-				write('Πρόταση:    '), write(H), nl, nl, 
+				write('Sentence:    '), write(H), nl, nl, 
 				name(H,L), tokenize(L,Out), s(Structure,Sem,Out,[]), 
-				write('Νόημα-Semantic:    '), write(Sem), nl, nl,
-				write('Συντακτική - Γραμματική ανάλυση:'), nl,
+				write('ΞΟΞ·ΞΌΞ±-Semantic:    '), write(Sem), nl, nl,
+				write('Syntactic - Grammatical Analysis:'), nl,
 				nl, write(Structure), nl,
 				nl, pp(Structure), nl,
 				write('Press enter to continue...'), readAtom(_), 
 				write('---------------------------------------------------------------'),  nl,
 				printAll(T).
 
-readfile(X) :- read_file(X, Content), write('Εισαγωγή νοημάτων (Semantics):'), nl, nl, import_semantics(Content).
+readfile(X) :- read_file(X, Content), write('Importing facts... :'), nl, nl, import_semantics(Content).
 readfileInfo(X) :- read_file(X, Content), printAll(Content),nl.
 
 /* ==============	SAY		==================================================== */
-/* Οι 2 τρόποι για την εισαγωγή μίας πρότασης. Αναλύονται στο εγχειρίδιο χρήστη. */
+/* For inserting / parsing a sentence										     */
 /* ============================================================================= */
 say :-
 	readAtom(X),
@@ -421,7 +408,7 @@ say :-
 	tokenize(L,Out),
 	s(Structure,Sem,Out,[]),
 	asserta(Sem),
-	write('Το γεγονός '),write(Sem),write(' προστέθηκε στη ΒΓ'),nl,
+	write('The fact '),write(Sem),write(' was added to the KB.'),nl,
 	show_info(Structure).
 	
 say(X):-
@@ -429,12 +416,12 @@ say(X):-
 		tokenize(L,Out),
 		s(Structure,Sem,Out,[]),
 		asserta(Sem),
-		write('Το γεγονός '),write(Sem),write(' προστέθηκε στη ΒΓ'),nl,
+		write('The fact '),write(Sem),write(' was added to the KB.'),nl,
 		show_info(Structure).
 		
 
 /* ==============	ASK		==================================================== */
-/* Οι 2 τρόποι για την εκτέλεση μίας ερώτησης. Αναλύονται στο εγχειρίδιο χρήστη. */
+/* For asking a question														 */
 /* ============================================================================= */		
 ask :-
 	readAtom(X),
@@ -447,32 +434,28 @@ ask(X):-
 		tokenize(L,Out),
 		query(Out).
 		
-query(Out):- q(Structure,Sem,tf,Out,[]), (Sem -> write('Aπάντηση: ΝΑΙ.') ; write('Aπάντηση: ΟΧΙ.')),show_info(Structure).
-query(Out):- q(Structure,Fact,wh,Out,[]), write('Aπάντηση: '), write(Fact), nl, show_info(Structure).
+query(Out):- q(Structure,Sem,tf,Out,[]), (Sem -> write('Answer: YES.') ; write('Answer: NO.')),show_info(Structure).
+query(Out):- q(Structure,Fact,wh,Out,[]), write('Answer: '), write(Fact), nl, show_info(Structure).
 
 
-/* ===============		ΠΑΡΑΔΕΙΓΜΑΤΑ	==================================================== 	
+/* ===============		EXAMPLES	==================================================== 	
 readfile('Haste makes Waste.txt').
 
-say('chris runs fast').
+say('nicky thinks that the man in the street is drunk').
+ask('who thinks of the drunk man?').
+ask('who thinks that the man is drunk?').
+ask('what is nicky thinking of?').
+
+
+say('vaggelis runs fast').
 ask('who runs fast?').
-ask('how does chris run?').
-
-say('chris loves a woman').
-ask('who loves a woman?').
-ask('who does chris love?').
-
-say('chris loves a pretty girl').
-ask('who loves a pretty girl?').
-ask('who does chris love?').
+ask('how does vaggelis run?').
 
 say('chris gave a program to themis').
-ask('what did chris give to themis').
-ask('who was chris giving a program to').
-ask('who gave a program to themis').
-ask('what was chris giving to themis').
+ask('what did chris give to themis?').
+ask('who gave a program to themis?').
 
-Πιο σύνθετο παράδειγμα:
+Ξ ΞΉΞΏ ΟΟΞ½ΞΈΞ΅ΟΞΏ ΟΞ±ΟΞ¬Ξ΄Ξ΅ΞΉΞ³ΞΌΞ±:
 say('chris gave a good program to themis').
 ask('what did chris give to themis').
 ask('who was chris giving a good program to').
