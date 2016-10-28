@@ -35,6 +35,39 @@ Answer: chris
 true .
 ```
 
+# Import facts from text file:
+You can also import fact from a text file. The file must have one sentence per line.
+```
+?- readfile('Haste makes Waste.txt').
+Importing facts... :
+
+had(woman,mongoose)
+had(woman,baby)
+faithful(mongoose)
+went(woman,market)
+left(woman,baby,mongoose)
+entered(big(cobra),house)
+fought(mongoose,cobra)
+killed(mongoose,cobra)
+returned(woman,house)
+laid(mongoose,entrance)
+saw(woman,mongoose)
+had(mongoose,bloody(mouth))
+noticed(woman,had(mongoose,bloody(mouth)))
+hasteful(woman)
+thought(woman,killed(mongoose,baby))
+became(woman,furious)
+threw(woman,waterpot,mongoose)
+killed(woman,mongoose)
+entered(woman,house)
+filled(woman,remorse)
+alive(baby)
+played(baby,cheerfully)
+laid(big(cobra),nearby)
+dead(big(cobra))
+cried(woman)
+true .
+```
 
 [1]: Striegnitz, Kristina, et al. "Algorithms for Computational Linguistics." (2003).
 
