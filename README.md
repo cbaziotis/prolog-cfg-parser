@@ -5,6 +5,8 @@ The parser understands sentences that follow proper grammar rules of the English
 Resources: [1], [2]
 
 # Examples:
+
+### Add Facts:
 You can add facts to the knowledge base:
 ```
 ?- say('vaggelis runs fast').
@@ -34,6 +36,45 @@ true .
 Answer: chris
 true .
 ```
+
+
+### More complex examples:
+Lets say we import this sentence:
+```
+?- say('nicky thinks that the man in the street is drunk').
+The fact thinks(nicky,drunk(man)) was added to the KB.
+true .
+```
+Now we can ask the following questions:
+```
+?- ask('who thinks of the drunk man').
+Answer: nicky
+true .
+
+?- ask('who thinks that the man is drunk?').
+Answer: nicky
+true .
+
+?- ask('what is nicky thinking of?').
+Answer: drunk(man)
+true .
+
+?- ask('what was nicky thinking of?').
+false.
+```
+Notice that at the last question we got a negative answer. This is bracuse we asked the system what nicky *was* thinking, but the fact we imported specifies only what nicky is thinking *right now*.
+
+Instead if we add the following sentence:
+```
+?- say('nicky thought that the man in the street is drunk').
+The fact thought(nicky,drunk(man)) was added to the KB.
+true .
+
+?- ask('what was nicky thinking of?').
+Answer: drunk(man)
+true .
+```
+
 
 # Import facts from text file:
 You can also import fact from a text file. The file must have one sentence per line.
