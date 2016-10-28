@@ -1,5 +1,5 @@
 # prolog-cfg
-The program implements a  [context-free grammar (CFG)][https://en.wikipedia.org/wiki/Context-free_grammar] parser, that extracts knowledge from text.
+The program implements a  [context-free grammar (CFG)](https://en.wikipedia.org/wiki/Context-free_grammar) parser, that extracts knowledge from text.
 The parser understands sentences that follow proper grammar rules of the English language.
 
 Resources: [1], [2]
