@@ -64,9 +64,9 @@ false.
 ```
 Notice that at the last question we got a negative answer. This is because we asked the system what nicky *was* thinking, but the fact we imported specifies only what nicky is thinking *right now*.
 
-Instead if we add the following sentence:
+However, notice what happens when we ask the following sentence:
 ```
-?- say('nicky thought that the man in the street is drunk').
+?- say('nicky thought that the man in the street was drunk').
 The fact thought(nicky,drunk(man)) was added to the KB.
 true .
 
