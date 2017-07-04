@@ -39,7 +39,7 @@ true .
 
 
 ### More complex examples:
-Lets say we import this sentence:
+Lets say that we import the following sentence:
 ```
 ?- say('nicky thinks that the man in the street is drunk').
 The fact thinks(nicky,drunk(man)) was added to the KB.
