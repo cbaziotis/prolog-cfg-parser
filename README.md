@@ -1,5 +1,5 @@
 # prolog-cfg
-The program implements a toy [context-free grammar (CFG)](https://en.wikipedia.org/wiki/Context-free_grammar) parser, that extracts knowledge (facts) from text.
+The program implements a toy [context-free grammar (CFG)](https://en.wikipedia.org/wiki/Context-free_grammar) parser, that extracts knowledge (facts) from text. This program was developed as part of an assignment, for the undergraduate NLP course in CS at University of Piraeus.
 The parser understands sentences that follow proper grammar rules of the English language. Also the vocabulary used in the text must be defined in advanced in the knowledge base.
 
 Resources: [1], [2]
